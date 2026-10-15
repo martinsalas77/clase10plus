@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Pacifico&display=swap');
 
+/* ─── Variables CSS ────────────────────────────────────────────── */
+:root {
+    --primary-color: #9a1f40;
+    --primary-hover: #d9455f;
+    --secondary-color: #74d4c0;
+    --bg-body: #f4f7f8;
+    --bg-card: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --border-color: #e5e7eb;
+    --sidebar-width: 260px;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-title: "Pacifico", cursive;
+    --font-heading: "Bricolage Grotesque", sans-serif;
+}
 
 * {
     margin: 0;
@@ -8,41 +23,46 @@
 }
 
 html {
-    /* Desplazamiento suave al hacer clic en los enlaces del menú */
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans serif;
-    background-color: #f4f7f8;
-    color: #1f2937;
+    font-family: var(--font-main);
+    background-color: var(--bg-body);
+    color: var(--text-main);
     line-height: 1.6;
     min-height: 100vh;
-    padding-left: 260px;
+    padding-left: var(--sidebar-width);
 }
 
+/* ─── Menú de Navegación (Sidebar Escritorio) ──────────────────── */
 nav {
-    background-color: #9a1f40;
-    color: white box-shadow 4px 0 15px rgba(0, 0, 0, 0.05);
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
     position: fixed;
-    /* Fija el menú lateral en la pantalla */
     top: 0;
     left: 0;
-    width: 260px;
+    width: var(--sidebar-width);
     height: 100vh;
     overflow-y: auto;
     z-index: 100;
 }
+
 nav ul {
     list-style: none;
     margin-top: 2rem;
     padding: 0 1.2rem;
 }
+
 nav li {
     margin-bottom: 0.5rem;
 }
+
 nav ul li a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     padding: 12px 20px;
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
@@ -50,34 +70,46 @@ nav ul li a {
     font-weight: 500;
     transition: all 0.3s ease;
 }
- /* Estilo para el primer elemento (Inicio) para que parezca activo */
+
+nav ul li a img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1); /* Asegura que los iconos se vean blancos */
+}
+
 nav ul li:first-child a {
-    background-color: #d9455f;
-    color: white font-weight 600;
+    background-color: var(--primary-hover);
+    color: white;
+    font-weight: 600;
 }
+
 nav ul li a:hover {
-    background-color: #d9455f;
-    color: white
+    background-color: var(--primary-hover);
+    color: white;
 }
- /* ─── Cabecera (Header) ────────────────────────────────────────── */
+
+/* ─── Cabecera (Header) ────────────────────────────────────────── */
 header {
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     padding: 3.5rem 2rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-color);
     text-align: center;
     display: block;
 }
+
 header h1 {
-    font-family: "Pacifico", cursive;
-    color: #9a1f40;
+    font-family: var(--font-title);
+    color: var(--primary-color);
     letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
 }
+
 header h2 {
     font-size: 1.2rem;
-    color: #4b5563;
+    color: var(--text-muted);
     font-weight: 400;
 }
+
 /* ─── Contenido Principal (Main) ───────────────────────────────── */
 main {
     padding: 3rem 2rem;
@@ -86,49 +118,129 @@ main {
     width: 100%;
     display: block;
 }
-/* Cada sección se convierte en una "tarjeta" limpia */
+
 section {
-    background: #ffffff;
+    background: var(--bg-card);
     padding: 2.5rem;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     margin-bottom: 2.5rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color);
 }
+
 section h2 {
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family: var(--font-heading);
     font-size: 1.8rem;
-    color: #9a1f40;
+    color: var(--primary-color);
     margin-bottom: 1.5rem;
-    border-bottom: 3px solid #74d4c0;
-/* Detalle con el color secundario */
+    border-bottom: 3px solid var(--secondary-color);
     padding-bottom: 0.5rem;
     display: inline-block;
 }
+
 section h3 {
     font-size: 1.3rem;
-    color: #1f2937;
+    color: var(--text-main);
     margin-top: 1.5rem;
     margin-bottom: 1rem;
 }
+
 p {
     margin-bottom: 1.2rem;
-    color: #4b5563;
+    color: var(--text-muted);
     font-size: 1.05rem;
     text-wrap: pretty;
-/* Mejora cómo terminan las líneas de texto */
 }
+
 p:last-child {
     margin-bottom: 0;
 }
+
 /* ─── Pie de Página (Footer) ───────────────────────────────────── */
 footer {
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     padding: 2rem;
     text-align: center;
-    border-top: 1px solid #e5e7eb;
-    color: #4b5563;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
     font-size: 0.95rem;
     font-weight: 500;
     display: block;
+}
+
+/* ================================================================= */
+/* ─── MEDIA QUERIES (DISEÑO RESPONSIVE) ─────────────────────────── */
+/* ================================================================= */
+
+/* Tablets (Max 760px) */
+@media (max-width: 760px) {
+    body {
+        padding-left: 200px;
+    }
+
+    nav {
+        width: 200px;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+}
+
+/* Celulares (Max 480px) */
+@media (max-width: 480px) {
+    body {
+        padding-left: 0;
+        padding-top: 70px; /* Espacio superior para que el contenido no quede oculto detrás de la barra de menú */
+    }
+
+    /* Transformamos el menú en una barra superior fija que muestra solo iconos */
+    nav {
+        position: fixed;
+        top: 0;
+        bottom: auto;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow-y: visible;
+        z-index: 1000;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 0;
+        padding: 0 0.5rem;
+        height: 100%;
+    }
+
+    nav li {
+        margin-bottom: 0;
+    }
+
+    /* Ocultamos el texto y dejamos visibles exclusivamente los iconos */
+    nav ul li a {
+        padding: 10px;
+        justify-content: center;
+        font-size: 0; /* Oculta cualquier texto residual */
+    }
+
+    nav ul li a img {
+        width: 24px;
+        height: 24px;
+    }
+
+    header {
+        padding: 2rem 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
 }
